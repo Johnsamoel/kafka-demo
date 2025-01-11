@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "kafka-demo/api/grpc/pb";
+
+// UserService is the service definition for user operations.
+service UserService {
+  // Create a new user
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+
+  // Update an existing user
+  rpc UpdateUser(UpdateUserRequest) returns (UpdateUserResponse);
+
+  // get user
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+}
+
+// User represents a user document in MongoDB.
+message User {
+  string userId = 1;                    
+  string first_name = 2;            
+  string last_name = 3;             
+  string email = 4;                 
+  string password = 5;              
+  bool is_notified = 6;             
+}
+
+// ommitted user for creation
+message ommittedUser {                    
+  string first_name = 1;            
+  string last_name = 2;             
+  string email = 3;                 
+  string password = 4;                          
+}
+
+// CreateUserRequest is the request message for creating a user.
+message CreateUserRequest {
+  ommittedUser user = 1; // User to be created
+}
+
+// CreateUserResponse is the response message for the CreateUser RPC.
+message CreateUserResponse {
+  User user = 1; // Created user details
+}
+
+// UpdateUserRequest is the request message for updating a user.
+message UpdateUserRequest {
+  User user = 1; // User details to be updated
+  string userId = 2;
+}
+
+// UpdateUserResponse is the response message for the UpdateUser RPC.
+message UpdateUserResponse {
+  User user = 1; // Updated user details
+}
+
+// GetUserRequest
+message GetUserRequest {
+  string userId = 1;
+}
+
+// GetUserResponse
+message GetUserResponse {
+  User user = 1;
+}
