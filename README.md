@@ -53,14 +53,12 @@ Kafka Demo App is a simple demonstration application that showcases the integrat
 Clone the repository:
 
 ```bash
-Copy code
 git clone https://github.com/yourusername/kafka-demo.git
 cd kafka-demo
 ```
 Create a .env file based on the provided .env.example file and fill in the required variables:
 ```
 env
-Copy code
 PORT=8080
 KAFKA_BROKERS=localhost:9092
 KAFKA_GROUP_ID=notifications-one
@@ -71,7 +69,6 @@ GMAIL_APP_PASSWORD=your-gmail-app-password
 Build and run the application using Docker Compose:
 ```
 ```bash
-Copy code
 docker-compose up --build
 ```
 
